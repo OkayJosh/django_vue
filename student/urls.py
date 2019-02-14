@@ -12,11 +12,21 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from rest_framework import routers
+from studentapp import viewset
+
+router = routers.DefaultRouter()
+router.register(r'users', viewset.UserViewSet)
+router.register(r'groups', viewset.GroupViewSet)
+
+
 
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     #rest api
     # url(r'^api-auth/', include('rest_framework.urls'))

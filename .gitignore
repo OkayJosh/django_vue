@@ -1,5 +1,7 @@
 node_modules
 student/__pycache__
-./db.sqlite3
-.dvue
+studentapp/__pycache__
+.db.sqlite3
+/dvue
 studentapp/migrations
+/db.sqlite3
