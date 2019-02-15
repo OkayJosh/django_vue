@@ -1,5 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
+// import WriteFilePlugin from 'write-file-webpack-plugin';
+var BundleTracker = require('webpack-bundle-tracker')
+// import BundleTracker  = require('webpack-bundle-tracker');
+var WriteFilePlugin = require('write-file-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -8,6 +12,12 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
+  // Including the bundle tracker
+  plugins: [
+    new BundleTracker({ filename: 'webpack-stats.json'}),
+// Including the WriteFilePlugin
+    new WriteFilePlugin(),
+    ],
   module: {
     rules: [
       {
