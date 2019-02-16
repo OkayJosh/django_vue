@@ -15,9 +15,11 @@ Including another URLconf
 
 """
 from django.contrib import admin
+from django.views.generic import TemplateView
 from django.urls import include, path
 from rest_framework import routers
 from studentapp import viewset
+from . import views
 
 router = routers.DefaultRouter()
 router.register(r'users', viewset.UserViewSet)
@@ -26,6 +28,7 @@ router.register(r'groups', viewset.GroupViewSet)
 
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     #rest api
